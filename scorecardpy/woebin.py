@@ -638,7 +638,7 @@ def woebin2_chimerge(dtm, init_count_distr=0.02, count_distr_limit=0.05,
         .assign(brkp = lambda x:np.where(x['brkp'] == rm_brkp['brkp'], x['brkp2'], x['brkp']))
         # groupby brkp
         binning_chisq = binning_chisq.groupby('brkp', group_keys=False).agg({
-          'variable':lambda x:np.unique(x),
+          'variable':lambda x:np.unique(x)[0],
           'bin': lambda x: '%,%'.join(x),
           'good': sum,
           'bad': sum
